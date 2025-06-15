@@ -6,10 +6,9 @@ __global__ void printSuccessForCorrectExecutionConfiguration()
   if(threadIdx.x == 1023 && blockIdx.x == 255)
   {
     printf("Success!\n");
-  } 
-   // else {
-    // printf("Failure. Update the execution configuration as necessary.\n");
-  // }
+  } else {
+    printf("Failure. Update the execution configuration as necessary.\n");
+  }
 }
 
 int main()
@@ -19,6 +18,5 @@ int main()
    * will print `"Success!"`.
    */
 
-  printSuccessForCorrectExecutionConfiguration<<<256, 1024>>>();
-  cudaDeviceSynchronize();
+  printSuccessForCorrectExecutionConfiguration<<<1, 1>>>();
 }

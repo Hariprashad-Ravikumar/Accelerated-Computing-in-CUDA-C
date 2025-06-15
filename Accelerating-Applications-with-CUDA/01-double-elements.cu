@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+/*
+ * Initialize array values on the host.
+ */
+
 void init(int *a, int N)
 {
   int i;
@@ -8,6 +12,10 @@ void init(int *a, int N)
     a[i] = i;
   }
 }
+
+/*
+ * Double elements in parallel on the GPU.
+ */
 
 __global__
 void doubleElements(int *a, int N)
@@ -19,6 +27,10 @@ void doubleElements(int *a, int N)
     a[i] *= 2;
   }
 }
+
+/*
+ * Check all elements have been doubled on the host.
+ */
 
 bool checkElementsAreDoubled(int *a, int N)
 {
