@@ -27,6 +27,8 @@ int main()
   - At a high level, execution configuration allows programmers to specify the **thread hierarchy** for a kernel launch, which defines the number of thread groupings (called **blocks**), as well as how many **threads** to execute in each block. Notice the kernel is launching with `1` block of threads (the first execution configuration argument) which contains `1` thread (the second configuration argument).
 
 For example, `GPUFunction<<<2, 4>>>();` is:
+
+```cpp
 ┌─────────────────────┐
 │        Block 0      │
 │  ┌───┬───┬───┬───┐  │
@@ -38,6 +40,7 @@ For example, `GPUFunction<<<2, 4>>>();` is:
 │  │ T4│ T5│ T6│ T7│  │
 │  └───┴───┴───┴───┘  │
 └─────────────────────┘
+```
 
 `cudaDeviceSynchronize();`
   - Unlike much C/C++ code, launching kernels is **asynchronous**: the CPU code will continue to execute *without waiting for the kernel launch to complete*.
