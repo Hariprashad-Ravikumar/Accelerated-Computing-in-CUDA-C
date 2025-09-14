@@ -28,7 +28,7 @@ int main()
 
 For example, `GPUFunction<<<2, 4>>>();` is:
 
-```cpp
+```
 ┌─────────────────────┐
 │        Block 0      │
 │  ┌───┬───┬───┬───┐  │
