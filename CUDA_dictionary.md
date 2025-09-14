@@ -48,10 +48,6 @@ For example, `GPUFunction<<<2, 4>>>();` is:
   - Unlike much C/C++ code, launching kernels is **asynchronous**: the CPU code will continue to execute *without waiting for the kernel launch to complete*.
   - A call to `cudaDeviceSynchronize`, a function provided by the CUDA runtime, will cause the host (CPU) code to wait until the device (GPU) code completes, and only then resume execution on the CPU.
 
-### CUDA Synchronization
-```cpp
-cudaDeviceSynchronize();
-```
 
 ### Mapping cuda indexes into index of data
 ``` cpp
