@@ -7,6 +7,11 @@ __global__ void GPUFunction()
   printf("This function is defined to run on the GPU.\n");
 }
 ```
+
+`__global__ void GPUFunction()`
+  - The `__global__` keyword indicates that the following function will run on the GPU, and can be invoked **globally**, which in this context means either by the CPU, or, by the GPU.
+  - Often, code executed on the CPU is referred to as **host** code, and code running on the GPU is referred to as **device** code.
+  - Notice the return type `void`. It is required that functions defined with the `__global__` keyword return type `void`.
 ### Calling kernel
 ```cpp
 int main()
@@ -15,12 +20,6 @@ int main()
   cudaDeviceSynchronize();
 }
 ```
-Here are some important lines of code to highlight, as well as some other common terms used in accelerated computing:
-
-`__global__ void GPUFunction()`
-  - The `__global__` keyword indicates that the following function will run on the GPU, and can be invoked **globally**, which in this context means either by the CPU, or, by the GPU.
-  - Often, code executed on the CPU is referred to as **host** code, and code running on the GPU is referred to as **device** code.
-  - Notice the return type `void`. It is required that functions defined with the `__global__` keyword return type `void`.
 
 `GPUFunction<<<1, 1>>>();`
   - Typically, when calling a function to run on the GPU, we call this function a **kernel**, which is **launched**.
