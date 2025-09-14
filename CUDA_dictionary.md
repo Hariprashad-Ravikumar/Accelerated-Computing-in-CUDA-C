@@ -24,7 +24,20 @@ int main()
 `GPUFunction<<<1, 1>>>();`
   - Typically, when calling a function to run on the GPU, we call this function a **kernel**, which is **launched**.
   - When launching a kernel, we must provide an **execution configuration**, which is done by using the `<<< ... >>>` syntax just prior to passing the kernel any expected arguments.
-  - At a high level, execution configuration allows programmers to specify the **thread hierarchy** for a kernel launch, which defines the number of thread groupings (called **blocks**), as well as how many **threads** to execute in each block. Execution configuration will be explored at great length later in the lab, but for the time being, notice the kernel is launching with `1` block of threads (the first execution configuration argument) which contains `1` thread (the second configuration argument).
+  - At a high level, execution configuration allows programmers to specify the **thread hierarchy** for a kernel launch, which defines the number of thread groupings (called **blocks**), as well as how many **threads** to execute in each block. Notice the kernel is launching with `1` block of threads (the first execution configuration argument) which contains `1` thread (the second configuration argument).
+
+For example, `GPUFunction<<<2, 4>>>();` is:
+┌─────────────────────┐
+│        Block 0      │
+│  ┌───┬───┬───┬───┐  │
+│  │ T0│ T1│ T2│ T3│  │
+│  └───┴───┴───┴───┘  │
+├─────────────────────┤
+│        Block 1      │
+│  ┌───┬───┬───┬───┐  │
+│  │ T4│ T5│ T6│ T7│  │
+│  └───┴───┴───┴───┘  │
+└─────────────────────┘
 
 `cudaDeviceSynchronize();`
   - Unlike much C/C++ code, launching kernels is **asynchronous**: the CPU code will continue to execute *without waiting for the kernel launch to complete*.
