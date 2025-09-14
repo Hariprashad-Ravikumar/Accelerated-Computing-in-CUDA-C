@@ -40,6 +40,8 @@ For example, `GPUFunction<<<2, 4>>>();` is:
 │  │ T4│ T5│ T6│ T7│  │
 │  └───┴───┴───┴───┘  │
 └─────────────────────┘
+
+<<< NUMBER_OF_BLOCKS, NUMBER_OF_THREADS_PER_BLOCK>>>
 ```
 
 `cudaDeviceSynchronize();`
