@@ -1,4 +1,4 @@
-# CUDA cheatsheet
+# CUDA dictionary
 
 ### Kernel declaration
 ``` cpp
@@ -9,8 +9,11 @@ __global__ void GPUFunction()
 ```
 ### Calling kernel
 ```cpp
-	//n_blocks, n_threads
-GPUFunction<<<1, 1>>>();
+int main()
+{
+  GPUFunction<<<1, 1>>>();
+  cudaDeviceSynchronize();
+}
 ```
 
 ### CUDA Synchronization
