@@ -82,11 +82,23 @@ int number_of_blocks = (N + threads_per_block - 1) / threads_per_block;
 (note here in C/C++: `a/b` is an integer division)
 
 ### Manging shared memory
+To allocate and free memory, and obtain a pointer that can be referenced in both host and device code, replace calls to `malloc` and `free` with `cudaMallocManaged` and `cudaFree` as in the following example:
 ``` cpp
-int N = 100;
-int *a;
+// CPU-only
+int N = 2<<20;
 size_t size = N * sizeof(int);
+int *a;
+a = (int *)malloc(size);
+// Use `a` in CPU-only program.
+free(a);
+
+// Accelerated
+int N = 2<<20;
+size_t size = N * sizeof(int);
+int *a;
+// Note the address of `a` is passed as first argument.
 cudaMallocManaged(&a, size);
+// Use `a` on the CPU and/or on any GPU in the accelerated system.
 cudaFree(a);
 ```
 
