@@ -73,6 +73,7 @@ will map each thread to one element in a vector. For example
 └─────────────────────┘
 ```
 would give 0,1,2,3,4,5,6,7.
+- There is a limit to the number of threads that can exist in a thread block: 1024 to be precise
 
 ### Computing number of needed blocks for data
 ``` cpp
