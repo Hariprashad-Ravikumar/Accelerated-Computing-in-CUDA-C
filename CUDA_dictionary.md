@@ -50,6 +50,7 @@ For example, `GPUFunction<<<2, 4>>>();` is:
 
 
 ### Mapping cuda indexes into index of data
+  - `gridim.x` is the number of blocks in the grid, in the above case 2
 ``` cpp
 int data_index = threadIdx.x + blockIdx.x * blockDim.x;
 ```
