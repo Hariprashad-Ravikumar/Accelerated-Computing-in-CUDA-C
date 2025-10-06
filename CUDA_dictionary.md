@@ -51,6 +51,9 @@ For example, `GPUFunction<<<2, 4>>>();` is:
 
 ### Mapping cuda indexes into index of data
   - `gridim.x` is the number of blocks in the grid, in the above case 2
+  - `blockIdx.x` is the index of the currect block within the grid, in the case 0 when executing the code in 0th block, 1 for when executing the code in 1st block, so on
+  - `blockDim.x` is the number of threads in a block, in the above case 4 (all blocks has same number of threads)
+  - `threadIdx.x` is the index of the thread within an executing block
 ``` cpp
 int data_index = threadIdx.x + blockIdx.x * blockDim.x;
 ```
