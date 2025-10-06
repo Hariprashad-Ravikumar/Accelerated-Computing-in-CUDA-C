@@ -54,9 +54,25 @@ For example, `GPUFunction<<<2, 4>>>();` is:
   - `blockIdx.x` is the index of the currect block within the grid, in the case 0 when executing the code in 0th block, 1 for when executing the code in 1st block, so on
   - `blockDim.x` is the number of threads in a block, in the above case 4 (all blocks has same number of threads)
   - `threadIdx.x` is the index of the thread within an executing block
+Using these variables, the formula
 ``` cpp
 int data_index = threadIdx.x + blockIdx.x * blockDim.x;
 ```
+will map each thread to one element in a vector. For example
+```
+┌─────────────────────┐
+│        Block 0      │
+│  ┌───┬───┬───┬───┐  │
+│  │ T0│ T1│ T2│ T3│  │
+│  └───┴───┴───┴───┘  │
+├─────────────────────┤
+│        Block 1      │
+│  ┌───┬───┬───┬───┐  │
+│  │ T4│ T5│ T6│ T7│  │
+│  └───┴───┴───┴───┘  │
+└─────────────────────┘
+```
+would give 0,1,2,3,4,5,6,7.
 
 ### Computing number of needed blocks for data
 ``` cpp
