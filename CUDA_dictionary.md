@@ -79,6 +79,7 @@ would give 0,1,2,3,4,5,6,7.
 ``` cpp
 int number_of_blocks = (N + threads_per_block - 1) / threads_per_block;
 ```
+(note here in C/C++: `a/b` is an integer division)
 
 ### Manging shared memory
 ``` cpp
