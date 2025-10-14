@@ -81,7 +81,6 @@ int number_of_blocks = (N + threads_per_block - 1) / threads_per_block;
 ```
 (note here in C/C++: `a/b` is an integer division)
 
-Sure — here’s the complete section in **one Markdown block**, ready to paste directly before your CUDA shared memory explanation:
 
 ````markdown
 ### Understanding `sizeof`, `malloc`, and `free` in C++
@@ -120,10 +119,7 @@ The `free` function releases memory previously allocated with `malloc`, preventi
 free(a);  // Frees memory allocated to `a`
 ```
 
-Together, `sizeof`, `malloc`, and `free` allow dynamic memory management in C/C++ — essential for controlling memory usage in both CPU-only and GPU-accelerated programs.
-
-```
-```
+Together, `sizeof`, `malloc`, and `free` allow dynamic memory management in C/C++, essential for controlling memory usage in both CPU-only and GPU-accelerated programs.
 
 
 ### Manging shared memory
