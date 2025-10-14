@@ -81,9 +81,8 @@ int number_of_blocks = (N + threads_per_block - 1) / threads_per_block;
 ```
 (note here in C/C++: `a/b` is an integer division)
 
-
-````markdown
 ### Understanding `sizeof`, `malloc`, and `free` in C++
+````markdown
 
 Before using CUDA-managed memory, it’s helpful to recall how memory allocation works in standard C/C++ programs.
 
