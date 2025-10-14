@@ -86,8 +86,6 @@ Before using CUDA-managed memory, it’s helpful to recall how memory allocation
 
 #### `sizeof`
 The `sizeof` operator returns the **number of bytes** occupied by a data type or variable. It ensures you allocate the correct amount of memory when working with arrays or structures.
-
-```
 ```cpp
 int x;
 std::cout << sizeof(x);       // Typically 4 bytes on most systems
