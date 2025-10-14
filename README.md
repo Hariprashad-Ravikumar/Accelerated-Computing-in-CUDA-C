@@ -81,6 +81,51 @@ int number_of_blocks = (N + threads_per_block - 1) / threads_per_block;
 ```
 (note here in C/C++: `a/b` is an integer division)
 
+Sure — here’s the complete section in **one Markdown block**, ready to paste directly before your CUDA shared memory explanation:
+
+````markdown
+### Understanding `sizeof`, `malloc`, and `free` in C++
+
+Before using CUDA-managed memory, it’s helpful to recall how memory allocation works in standard C/C++ programs.
+
+#### `sizeof`
+The `sizeof` operator returns the **number of bytes** occupied by a data type or variable. It ensures you allocate the correct amount of memory when working with arrays or structures.
+
+```cpp
+int x;
+std::cout << sizeof(x);       // Typically 4 bytes on most systems
+std::cout << sizeof(int);     // Same as above
+
+int N = 100;
+size_t size = N * sizeof(int); // Memory needed for 100 integers
+````
+
+#### `malloc`
+
+The `malloc` (memory allocate) function dynamically allocates a block of memory of a specified size (in bytes) and returns a **pointer** to its beginning. The memory is **uninitialized**.
+
+```cpp
+int *a;
+a = (int *)malloc(size);  // Allocates `size` bytes and returns a pointer
+if (a == NULL) {
+    std::cerr << "Memory allocation failed\n";
+}
+```
+
+#### `free`
+
+The `free` function releases memory previously allocated with `malloc`, preventing **memory leaks**.
+
+```cpp
+free(a);  // Frees memory allocated to `a`
+```
+
+Together, `sizeof`, `malloc`, and `free` allow dynamic memory management in C/C++ — essential for controlling memory usage in both CPU-only and GPU-accelerated programs.
+
+```
+```
+
+
 ### Manging shared memory
 To allocate and free memory, and obtain a pointer that can be referenced in both host and device code, replace calls to `malloc` and `free` with `cudaMallocManaged` and `cudaFree` as in the following example:
 ``` cpp
